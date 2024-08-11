@@ -45,4 +45,8 @@ target_sources(host INTERFACE
         )
 
 target_include_directories(host PRIVATE .)
-target_link_libraries(host PRIVATE brender-inc-ddi ${CMAKE_DL_LIBS})
+if (NINTENDO_3DS)
+    target_link_libraries(host PRIVATE brender-inc-ddi)
+else()
+    target_link_libraries(host PRIVATE brender-inc-ddi ${CMAKE_DL_LIBS})
+endif()
